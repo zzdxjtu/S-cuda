@@ -15,29 +15,11 @@ from scipy.ndimage.morphology import binary_fill_holes
 from skimage import morphology
 from skimage.measure import label, regionprops
 
-'''
-#gt = "/extracephonline/medai_data2/zhengdzhang/eyes/qikan/correction/new-dataset_2/mask"
-gt = "/extracephonline/medai_data2/zhengdzhang/eyes/qikan/path/to/source/labels"
-#pre = "/extracephonline/medai_data2/zhengdzhang/eyes/qikan/weights/refuge-new/source/disc_small/level_0.2-0.3/noise_mask_0.9"
-#pre = "/extracephonline/medai_data2/zhengdzhang/eyes/qikan/correction/new-dataset_2/level_0.5-0.7/noise_mask_0.9_scratch"
-#pre = "/extracephonline/medai_data2/zhengdzhang/eyes/qikan/path/to/source/level_0.2-0.3/noise_labels_0.9"
-#pre = "/extracephonline/medai_data2/zhengdzhang/eyes/path/to/dataset/source/level_0.5-0.7/noise_labels_0.9"
-pre = "/extracephonline/medai_data2/zhengdzhang/eyes/qikan/correction/new-dataset/level_0.5-0.7/noise_labels_0.9"
-#pre = "/extracephonline/medai_data2/zhengdzhang/eyes/qikan/scratch/source/level_0.2-0.3/noise_mask_0.9"
-#dir = "/extracephonline/medai_data2/zhengdzhang/eyes/qikan/correction_scratch/update_list/level_0.5-0.7/noise_labels_0.9/select_0.3"
-dir = "/extracephonline/medai_data2/zhengdzhang/eyes/qikan/correction/refuge-new/level_0.5-0.7/noise_labels_0.9/select_0.9"
-#dir = "/extracephonline/medai_data2/zhengdzhang/eyes/qikan/correction/refuge/level_0.5-0.7/select_0.4"
-'''
+
 gt = "/extracephonline/medai_data2/zhengdzhang/eyes/qikan/scgm/data/source/labels"
-#pre = "/extracephonline/medai_data2/zhengdzhang/eyes/qikan/correction/new-dataset/level_0.5-0.7/noise_labels_0.1_new"
 pre = "/extracephonline/medai_data2/zhengdzhang/eyes/qikan/scgm/data/source/level_0.5-0.7/noise_labels_0.1"
-#pre = "/extracephonline/medai_data2/zhengdzhang/eyes/qikan/path/to/source/level_0.5-0.7/noise_labels_0.9"
 dir = "/extracephonline/medai_data2/zhengdzhang/eyes/qikan/scgm/data/source/level_0.5-0.7/noise_labels_0.1"
 
-#gt = "/extracephonline/medai_data2/zhengdzhang/eyes/qikan/correction/new-dataset_2/mask"
-#pre = "/extracephonline/medai_data2/zhengdzhang/eyes/qikan/correction/new-dataset_2/level_0.2-0.3/noise_mask_0.1_new"
-#dir = "/extracephonline/medai_data2/zhengdzhang/eyes/qikan/path/to/source/level_0.2-0.3/noise_labels_0.1"
-#dir = "/extracephonline/medai_data2/zhengdzhang/eyes/qikan/correction_scratch/update_list/level_0.2-0.3/noise_labels_0.9/select_0.5"
 
 
 def get_contours(img):
@@ -56,7 +38,6 @@ def calculate_hausdorff(gt_dir, pred_dir, devkit_dir=''):
     img_ids = [i_id.strip() for i_id in open(image_path_list)]
     gt_imgs = [osp.join(gt_dir, x.split('.')[0]+'.png') for x in img_ids]
     pred_imgs = [osp.join(pred_dir, x.split('.')[0]+'.png') for x in img_ids]
-    #import pdb;pdb.set_trace()
     print(len(gt_imgs))
     hausdorff_sd = cv2.createHausdorffDistanceExtractor()
     for ind in range(len(gt_imgs)):
@@ -76,13 +57,11 @@ def calculate_hausdorff(gt_dir, pred_dir, devkit_dir=''):
         num = 0
         gt_img = cv2.imread(gt_imgs[ind])
         gt_img_disc = cv2.imread(gt_imgs[ind])
-        #[m, n] = size(gt_img)
         for i in range(3):
             gt_img[:,:,i][gt_img[:,:,i]>50] = 255
             gt_img[:,:,i][gt_img[:,:,i]>50] = 255
             gt_img[:,:,i][gt_img[:,:,i]>50] = 255
         print(gt_img[:,:,0])
-        #print(gt_img.size)
         pred_img = cv2.imread(pred_imgs[ind])
         pred_img_disc = cv2.imread(pred_imgs[ind])
         for i in range(3):
@@ -95,10 +74,7 @@ def calculate_hausdorff(gt_dir, pred_dir, devkit_dir=''):
         pred_i_disc = get_contours(pred_img_disc)         
         distance_cup.append(hausdorff_sd.computeDistance(gt_i, pred_i))
         distance_disc.append(hausdorff_sd.computeDistance(gt_i_disc, pred_i_disc))
-        '''
-        distance_disc.append(hausdorff_sd.computeDistance(get_contours(mask_binary[:,:,0]), get_contours(prediction_binary[:,:,0])))
-        distance_disc.append(hausdorff_sd.computeDistance(get_contours(mask_binary[:,:,1]), get_contours(prediction_binary[:,:,1])))
-        '''
+
     print(distance_disc)
     print(distance_cup)
     return sum(distance_disc) / (1. * len(distance_disc)), sum(distance_cup) / (1. * len(distance_cup))

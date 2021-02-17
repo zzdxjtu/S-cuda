@@ -14,7 +14,6 @@ from skimage import morphology
 from skimage.measure import label, regionprops
 
 gt = "/apdcephfs/share_1085767/zhengdzhang/eyes/dataset/source/eyesgan/labels"
-#pre = "/apdcephfs/share_1085767/zhengdzhang/eyes/qikan/correction/new-dataset/level_0.2-0.3/noise_labels_0.9"
 pre = "/apdcephfs/share_1085767/zhengdzhang/eyes/qikan/correction/new-dataset/level_0.2-0.3/noise_labels_0.9"
 dir = "/apdcephfs/share_1085767/zhengdzhang/eyes/qikan/correction/update_list/level_0.2-0.3/noise_labels_0.9/select_0.5"
 
@@ -30,7 +29,6 @@ def calculate_dice(gt_dir, pred_dir, devkit_dir=''):
     img_ids = [i_id.strip() for i_id in open(image_path_list)]
     gt_imgs = [osp.join(gt_dir, x.split('.')[0]+'.bmp') for x in img_ids]
     pred_imgs = [osp.join(pred_dir, x.split('.')[0]+'.bmp') for x in img_ids]
-    #import pdb;pdb.set_trace()
     print(len(gt_imgs))
     for ind in range(len(gt_imgs)):
         prediction = np.asarray(Image.open(pred_imgs[ind]))

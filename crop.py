@@ -51,7 +51,6 @@ def get_bbox_source(img):
 
 if __name__ == '__main__':
     root = '/extracephonline/medai_data2/lolitazhang/my-master/eyes-master/path/to/dataset-new/source'
-    #list_path = '/extracephonline/medai_data2/lolitazhang/my-master/eyes-master/path/to/dataset-new/target.txt'
     list_path = '/extracephonline/medai_data2/lolitazhang/my-master/eyes-master/path/to/dataset-new/source.txt'
     new_root = '/extracephonline/medai_data2/zhengdzhang/eyes/qikan/cai/source'
     img_ids = [i_id.strip() for i_id in open(list_path)]

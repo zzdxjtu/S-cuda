@@ -17,4 +17,7 @@ This repository provides code for the paper, S-CUDA: Self-Cleansing Unsupervised
 * matplotlib
 ### Datasets
 Download from [Refuge](https://refuge.grand-challenge.org/), prepare dataset in data directory as follows.
-
+```ruby
+  def add(a, b)
+    return a + b
+  end

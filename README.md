@@ -46,3 +46,7 @@ S-cuda
 Initial weights and pre-trained model download link:
 * [Initial weights](https://pan.baidu.com/s/1EUfmEAyUn6NdBbJ7Pq8C_Q), code:4y69
 * [Pre-trained model](https://pan.baidu.com/s/1R05swgfBVpXSscVI07mxpg), code:9koj
+```
+unzip Initial_weights.zip 
+unzip Pre-trained model.zip 
+```

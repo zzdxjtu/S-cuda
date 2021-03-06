@@ -51,12 +51,12 @@ unzip Initial_weights.zip
 unzip Pre-trained model.zip 
 ```
 ### Running
-0.Clone this repo:
+__0.Clone this repo:__  
 ```
 git clone https://github.com/zzdxjtu/S-cuda.git
 cd S-cuda
 ```
-1.Train  
+__1.Train:__  
 All training script is stored in scripts directory.
 ```
 sh scripts/run1.sh
@@ -65,7 +65,7 @@ sh scripts/run3.sh
 sh scripts/run4.sh
 ```
 Before training, please check whether all the model weight and dataset path is correct.  
-2.Test  
+__2.Test:__  
 ```
 cd S-cuda
 python Network-1/evaluation.py

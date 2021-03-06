@@ -18,20 +18,27 @@ This repository provides code for the paper, S-CUDA: Self-Cleansing Unsupervised
 ### Datasets
 Download from [Refuge](https://refuge.grand-challenge.org/), prepare dataset in data directory as follows.
 ```
-project
-│   README.md
-│   file001.txt    
-│
-└───folder1
-│   │   file011.txt
-│   │   file012.txt
+S-cuda
+│   Network-1
+|   Network-2
+│   scripts
+└───dataset
+│   │   source
+│   │   │   images
+│   │   │   labels
 │   │
-│   └───subfolder1
-│       │   file111.txt
-│       │   file112.txt
-│       │   ...
-│   
-└───folder2
-    │   file021.txt
-    │   file022.txt
+│   └───target
+│   │   │   images
+│   │   │   labels
+│   │   │   pseudo_label 
+│   │ 
+│   └───test
+│   │   │   images
+│   │   │   labels
+│   │
+│   └───source.txt
+│   │   target.txt
+│   │   test.txt
+│        
+└───README.md
 ```

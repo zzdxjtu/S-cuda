@@ -50,3 +50,9 @@ Initial weights and pre-trained model download link:
 unzip Initial_weights.zip 
 unzip Pre-trained model.zip 
 ```
+### Running
+0.Clone this repo:
+```
+git clone https://github.com/EmmaW8/pOSAL.git
+cd S-cuda
+```

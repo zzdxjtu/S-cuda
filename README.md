@@ -64,7 +64,7 @@ sh scripts/run2.sh
 sh scripts/run3.sh
 sh scripts/run4.sh
 ```
-Before training, please check whether all the model weight and dataset path is correct.
+Before training, please check whether all the model weight and dataset path is correct.  
 2.Test  
 ```
 cd S-cuda

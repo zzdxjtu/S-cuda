@@ -65,3 +65,10 @@ sh scripts/run3.sh
 sh scripts/run4.sh
 ```
 Before training, please check whether all the model weight and dataset path is correct.
+2.Test  
+```
+cd S-cuda
+python Network-1/evaluation.py
+```
+### Acknowledge  
+Some codes are revised according to [liyunsheng13/BDL] (https://github.com/liyunsheng13/BDL)and [EmmaW8/pOSAL](https://github.com/EmmaW8/pOSAL). Thank them very much.

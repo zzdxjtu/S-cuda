@@ -53,6 +53,6 @@ unzip Pre-trained model.zip
 ### Running
 0.Clone this repo:
 ```
-git clone https://github.com/EmmaW8/pOSAL.git
+git clone https://github.com/zzdxjtu/S-cuda.git
 cd S-cuda
 ```

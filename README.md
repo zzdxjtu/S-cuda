@@ -15,3 +15,6 @@ This repository provides code for the paper, S-CUDA: Self-Cleansing Unsupervised
 * opencv
 * scipy
 * matplotlib
+### Datasets
+Prepare dataset in data directory as follows.
+[Refuge](https://refuge.grand-challenge.org/)

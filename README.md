@@ -56,8 +56,8 @@ unzip Pre-trained model.zip
 git clone https://github.com/zzdxjtu/S-cuda.git
 cd S-cuda
 ```
-1.Train
-  All training script is stored in scripts directory.
+1.Train  
+All training script is stored in scripts directory.
 ```
 sh scripts/run1.sh
 sh scripts/run2.sh

@@ -71,4 +71,4 @@ cd S-cuda
 python Network-1/evaluation.py
 ```
 ### Acknowledge  
-Some codes are revised according to [liyunsheng13/BDL] (https://github.com/liyunsheng13/BDL)and [EmmaW8/pOSAL](https://github.com/EmmaW8/pOSAL). Thank them very much.
+Some codes are revised according to [liyunsheng13/BDL](https://github.com/liyunsheng13/BDL) and [EmmaW8/pOSAL](https://github.com/EmmaW8/pOSAL). Thank them very much.

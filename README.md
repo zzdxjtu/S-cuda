@@ -73,6 +73,7 @@ python Network-1/evaluation.py
 ### Supplementary notes  
 ```
 boudary.ipynb ##Calculate the weight map of the optic cup, optic disc, and background  
+calculate_dice.py ##Calculate dice coefficient  
 
 ```
 ### Acknowledge  

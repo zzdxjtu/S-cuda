@@ -72,11 +72,11 @@ python Network-1/evaluation.py
 ```
 ### Supplementary notes  
 ```
-__boudary.ipynb__ ##Calculate the weight map of the optic cup, optic disc, and background  
-__calculate_dice.py__ ##Calculate dice coefficient  
-get_contour.ipynb ##Obtain the edge contour of the target object  
-hausdorff_dis.py ##Calculate hausdorff distance  
-noise_label.ipynb ##Generate labels with different levels of noise and different proportions, including corrosion, expansion, deformation operations
+boudary.ipynb  ##Calculate the weight map of the optic cup, optic disc, and background  
+calculate_dice.py  ##Calculate dice coefficient  
+get_contour.ipynb  ##Obtain the edge contour of the target object  
+hausdorff_dis.py  ##Calculate hausdorff distance  
+noise_label.ipynb  ##Generate labels with different levels of noise and different proportions, including corrosion, expansion, deformation operations
 ```
 ### Acknowledge  
 Some codes are revised according to [liyunsheng13/BDL](https://github.com/liyunsheng13/BDL) and [EmmaW8/pOSAL](https://github.com/EmmaW8/pOSAL). Thank them very much.

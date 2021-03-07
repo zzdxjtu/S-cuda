@@ -71,6 +71,9 @@ cd S-cuda
 python Network-1/evaluation.py
 ```
 ### Supplementary notes  
+```
+boudary.ipynb ##Calculate the weight map of the optic cup, optic disc, and background  
 
+```
 ### Acknowledge  
 Some codes are revised according to [liyunsheng13/BDL](https://github.com/liyunsheng13/BDL) and [EmmaW8/pOSAL](https://github.com/EmmaW8/pOSAL). Thank them very much.

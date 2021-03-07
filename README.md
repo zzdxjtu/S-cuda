@@ -75,6 +75,7 @@ python Network-1/evaluation.py
 boudary.ipynb ##Calculate the weight map of the optic cup, optic disc, and background  
 calculate_dice.py ##Calculate dice coefficient  
 get_contour.ipynb ##Obtain the edge contour of the target object  
+hausdorff_dis.py ##Calculate hausdorff distance  
 
 ```
 ### Acknowledge  

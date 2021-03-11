@@ -79,4 +79,4 @@ hausdorff_dis.py  ##Calculate hausdorff distance
 noise_label.ipynb  ##Generate labels with different levels of noise and different proportions, including corrosion, expansion, deformation operations
 ```
 ### Acknowledge  
-Some codes are revised according to [liyunsheng13/BDL](https://github.com/liyunsheng13/BDL) and [EmmaW8/pOSAL](https://github.com/EmmaW8/pOSAL). Thank them very much.
+Some of our codes are referring to [liyunsheng13/BDL](https://github.com/liyunsheng13/BDL) and [EmmaW8/pOSAL](https://github.com/EmmaW8/pOSAL). Thanks for their helpful works.

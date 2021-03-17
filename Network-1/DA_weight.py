@@ -14,7 +14,7 @@ from model import CreateModel
 from model import CreateDiscriminator
 from utils.timer import Timer
 from model.loss import prob_2_entropy, WeightedBCEWithLogitsLoss
-import tensorboardX
+#import tensorboardX
 from PIL import Image
 
 def dice_coef(y_true, y_pred):
@@ -55,7 +55,7 @@ def main():
     model_D2, optimizer_D2 = CreateDiscriminator(args, 2)
     start_iter = 0
     if args.restore_from is not None:
-        start_iter = int(args.restore_from.rsplit('/', 1)[1].rsplit('_')[1])
+        start_iter = int(args.restore_from.rsplit('\\', 1)[1].rsplit('_')[1])
         
     #train_writer = tensorboardX.SummaryWriter(os.path.join(args.snapshot_dir, "logs", model_name))
     
@@ -241,11 +241,14 @@ def main():
             noise_num_remember = int(noise_rate * len(noise_loss_sorted))
             noise_ind_update = noise_ind_sorted[:noise_num_remember]
             noise_name_update = np.array(name_list)[noise_ind_update]
-
-            with open(os.path.join(args.save_selected_samples), "w") as f:
+            if not os.path.exists("../clean/n1/clean_list/level_0.2-0.3/noise_labels_0.1/"):
+                os.makedirs("../clean/n1/clean_list/level_0.2-0.3/noise_labels_0.1/")
+            with open(args.save_selected_samples, "w") as f:
                 for i in range(len(clean_name_update)):
-                    f.write(str(clean_name_update[i][0])+'\n') 
-            with open(os.path.join(args.noise_selected_samples), "w") as g:
+                    f.write(str(clean_name_update[i][0])+'\n')
+            if not os.path.exists("../noisy/n1/noise_list/level_0.2-0.3/noise_labels_0.1/"):
+                os.makedirs("../noisy/n1/noise_list/level_0.2-0.3/noise_labels_0.1/")
+            with open(args.noise_selected_samples, "w") as g:
                 for j in range(len(noise_name_update)):
                     g.write(str(noise_name_update[j][0])+'\n')  
             print(args.save_selected_samples, 'Sample selection finished!')

@@ -28,13 +28,9 @@ class eyesDataSetLabel(data.Dataset):
     def __getitem__(self, index):
         name = self.img_ids[index]
         name_label = name.split('.')[0]+'.png'
-        net2_root = '/extracephonline/medai_data2/lolitazhang/my-master/eyes-master/data/refuge-new/target'
+        net2_root = '..\\dataset\\target'
         image = Image.open(osp.join(self.root, "images/%s" % name)).convert('RGB')
-        #label = Image.open(osp.join(self.root, self.label_folder+"/%s" %name_label))
-        #label = Image.open(osp.join(net2_root, self.label_folder + "/%s" % name_label))
-        label = Image.open(osp.join(net2_root + "/pseudo_label_folder_name/%s" %name_label))
-        #arr = np.load(osp.join(self.root, self.label_folder+"/%s" %name.split('/')[1].split('.')[0]+'.npy'))
-        #import pdb;pdb.set_trace()
+        label = Image.open(osp.join(net2_root + "/pseudo_label/%s" %name_label))
         image = image.resize(self.crop_size, Image.BICUBIC)
         label = label.resize(self.crop_size, Image.NEAREST) 
 

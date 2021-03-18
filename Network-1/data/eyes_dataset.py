@@ -26,18 +26,11 @@ class eyestargetDataSet(data.Dataset):
 
     def __getitem__(self, index):
 
-        #name = self.img_ids[index]
-        name = self.img_ids[index] + '_fake' + '.png'
-        #name = self.img_ids[index] + '.png'
-        #name = self.img_ids[index] + '.jpg'
+        name = self.img_ids[index]
         image = Image.open(osp.join(self.root, "images/%s" % name)).convert('RGB')
-        #import pdb;pdb.set_trace()
-        #print(osp.join(self.root, "image/%s" % name))
         # resize
         image = image.resize(self.crop_size, Image.BICUBIC)
-
         image = np.asarray(image, np.float32)
-
         size = image.shape
         image = image[:, :, ::-1]  # change to BGR
         image -= self.mean
@@ -70,11 +63,11 @@ class eyessourceDataSet(data.Dataset):
     def __getitem__(self, index):
         name = self.img_ids[index]
         print(name)
-        name_img = name.split('.')[0] + '_fake' + '.png'
+        name_img = name.split('.')[0] + '.jpg'
         name_label = name.split('.')[0] + '.bmp'
         image = Image.open(osp.join(self.root, "images/%s" % name_img)).convert('RGB')
-        label = Image.open(osp.join(self.root,"level_0.5-0.7", "noise_labels_0.9/%s" % name_label))
-        label_new = Image.open(osp.join(self.root,"level_0.5-0.7", "noise_labels_0.9_scratch/%s" % name_label))
+        label = Image.open(osp.join(self.root,"level_0.2-0.3", "noise_labels_0.1/%s" % name_label))
+        label_new = Image.open(osp.join(self.root,"level_0.2-0.3", "noise_labels_0.1_scratch/%s" % name_label))
         #label = Image.open(osp.join(self.root,"labels/%s" % name_label))
         #print(image.size, label.size)
         # resize
@@ -83,7 +76,6 @@ class eyessourceDataSet(data.Dataset):
         label_new = label_new.resize(self.crop_size, Image.NEAREST)
         dis_weight = caculate_weight_map(label, weight_cof=30)
         dis_weight_new = caculate_weight_map(label_new, weight_cof=30)
-        #print(image.size, label.size, dis_weight.shape)
         image = np.asarray(image, np.float32)
         label = np.asarray(label, np.float32)
         label_new = np.asarray(label_new, np.float32)

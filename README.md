@@ -85,8 +85,8 @@ __3.Performance__
 Pretrained  
 Level_0.5-0.7/noise_labels_0.5 | select_0.1 | select_0.2 | select_0.3 | select_0.4 |select_0.5  
 ---- | ---- | ----| ---- | ---- | ----  
-
-
+Disc_dice | 0.95 | 0.95 | 0.948 | 0.95 | 0.95
+Cup_dice | 0.882 | 0.873 | 0.871 | 0.871 | 0.869
 ### Supplementary notes  
 ```
 boudary.ipynb  ##Calculate the weight map of the optic cup, optic disc, and background  

@@ -16,9 +16,9 @@ from skimage import morphology
 from skimage.measure import label, regionprops
 
 
-gt = "/extracephonline/medai_data2/zhengdzhang/eyes/qikan/scgm/data/source/labels"
-pre = "/extracephonline/medai_data2/zhengdzhang/eyes/qikan/scgm/data/source/level_0.5-0.7/noise_labels_0.1"
-dir = "/extracephonline/medai_data2/zhengdzhang/eyes/qikan/scgm/data/source/level_0.5-0.7/noise_labels_0.1"
+gt = ".\dataset\source\labels"
+pre = ""
+dir = ".\dataset"
 
 
 
@@ -34,26 +34,13 @@ def get_contours(img):
 def calculate_hausdorff(gt_dir, pred_dir, devkit_dir=''):
     distance_disc = []
     distance_cup = []
-    image_path_list = osp.join(devkit_dir, 'noise_label.txt')
+    image_path_list = osp.join(devkit_dir, 'source.txt')
     img_ids = [i_id.strip() for i_id in open(image_path_list)]
     gt_imgs = [osp.join(gt_dir, x.split('.')[0]+'.png') for x in img_ids]
     pred_imgs = [osp.join(pred_dir, x.split('.')[0]+'.png') for x in img_ids]
     print(len(gt_imgs))
     hausdorff_sd = cv2.createHausdorffDistanceExtractor()
     for ind in range(len(gt_imgs)):
-        '''
-        prediction = np.asarray(Image.open(pred_imgs[ind]))
-        print(pred_imgs[ind])
-        mask = np.asarray(Image.open(gt_imgs[ind]))
-        mask_binary = np.zeros((mask.shape[0], mask.shape[1],2))
-        prediction_binary = np.zeros((prediction.shape[0], prediction.shape[1],2))
-        mask_binary[mask < 200] = [1, 0]
-        mask_binary[mask < 50] = [1, 1]
-        prediction_binary[prediction < 200] = [1, 0]
-        prediction_binary[prediction < 50] = [1, 1]
-        #disc_dice.append(dice_coef(mask_binary[:,:,0], prediction_binary[:,:,0]))
-        #cup_dice.append(dice_coef(mask_binary[:,:,1], prediction_binary[:,:,1]))
-        '''
         num = 0
         gt_img = cv2.imread(gt_imgs[ind])
         gt_img_disc = cv2.imread(gt_imgs[ind])

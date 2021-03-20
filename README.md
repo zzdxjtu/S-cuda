@@ -70,6 +70,8 @@ __2.Test:__
 cd S-cuda
 python Network-1/evaluation.py
 ```
+__3.Performance__  
+
 ### Supplementary notes  
 ```
 boudary.ipynb  ##Calculate the weight map of the optic cup, optic disc, and background  

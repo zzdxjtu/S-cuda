@@ -1,8 +1,8 @@
 import argparse
 parser = argparse.ArgumentParser()
-parser.add_argument('--list_a', type=str, default='/extracephonline/medai_data2/zhengdzhang/eyes/qikan/path/to/dataset-new/source/eyesgan/level_0.5-0.7/noise_labels_0.5/noise_selected_0.1.txt')
-parser.add_argument('--list_b', type=str, default='/extracephonline/medai_data2/zhengdzhang/eyes/qikan/pOSAL-master-noise/data/refuge-new/level_0.5-0.7/noise_labels_0.5/noise_sample_0.1.txt')
-parser.add_argument('--list_noise_save', type=str, default='/extracephonline/medai_data2/zhengdzhang/eyes/qikan/correction/refuge/level_0.5-0.7/select_0.1/jiao.txt')
+parser.add_argument('--list_a', type=str, default=None)
+parser.add_argument('--list_b', type=str, default=None)
+parser.add_argument('--list_noise_save', type=str, default=None)
 args = parser.parse_args()
 print(args)
 with open(args.list_a) as g:

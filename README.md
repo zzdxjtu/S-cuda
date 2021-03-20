@@ -82,11 +82,16 @@ python Network-1/evaluation.py
 ```
 __3.Performance__  
 
-Pretrained  
-Level_0.5-0.7/noise_labels_0.5 | select_0.1 | select_0.2 | select_0.3 | select_0.4 |select_0.5  
+**Pretrained**  
+Level_0.5-0.7/noise_labels_0.5 | select_0.1 | select_0.2 | select_0.3 | select_0.4  
+---- | ---- | ----| ---- | ----  
+Disc_dice | 0.95 | 0.95 | 0.948 | 0.95  
+Cup_dice | 0.882 | 0.873 | 0.871 | 0.871    
+**Scratch**  
+Level_0.5-0.7/noise_labels_0.5 | select_0.1 | select_0.2 | select_0.3 | select_0.4   
 ---- | ---- | ----| ---- | ---- | ----  
-Disc_dice | 0.95 | 0.95 | 0.948 | 0.95 | 0.95
-Cup_dice | 0.882 | 0.873 | 0.871 | 0.871 | 0.869
+Disc_dice | 0.947 | 0.943 | 0.943 | 0.941  
+Cup_dice | 0.889 | 0.886 | 0.886 | 0.872  
 ### Supplementary notes  
 ```
 boudary.ipynb  ##Calculate the weight map of the optic cup, optic disc, and background  

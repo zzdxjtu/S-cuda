@@ -106,7 +106,7 @@ hausdorff_dis.py
 noise_label.ipynb  
 ##Generate labels with different levels of noise and different proportions, including corrosion, expansion, deformation operations
 crop.py  
-##crop 512×512 ROI from source image.
+##crop 512×512 ROI from source image
 ```
 ### Acknowledge  
 Some of our codes are referring to [liyunsheng13/BDL](https://github.com/liyunsheng13/BDL) and [EmmaW8/pOSAL](https://github.com/EmmaW8/pOSAL). Thanks for their helpful works.

@@ -59,10 +59,10 @@ cd S-cuda
 __1.Train:__  
 All training script is stored in scripts directory.
 ```
-sh scripts/run1.sh
-sh scripts/run2.sh
-sh scripts/run3.sh
-sh scripts/run4.sh
+sh scripts/run1.sh  ##The two networks select the noise data and clean data simultaneously, and then input the clean data into each other's network for finetune, and you can change the remember rate and noise rate according to the noise ratio of the source training set.
+sh scripts/run2.sh  ##The two networks select the noise data and clean data simultaneously, and then input the clean data into each other's network for finetune.
+sh scripts/run3.sh  ##Correct the common part of the noise data selected by the two networks, and then the two networks select the noise data and clean data simultaneously, at last input the clean data into each other's network for finetune.
+sh scripts/run4.sh  ##Correct the common part of the noise data selected by the two networks, and then the two networks select the noise data and clean data simultaneously, at last input the clean data into each other's network for finetune.
 ```
 Before training, please check whether all the model weight and dataset path is correct.  
 __2.Test:__  

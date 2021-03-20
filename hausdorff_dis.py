@@ -2,34 +2,25 @@ import cv2
 import matplotlib.pyplot as plt
 import torch.backends.cudnn as cudnn
 from torch.autograd import Variable
-#from options.test_ssl_options import TestOptions
-#from data import CreateTrgDataSSLLoader
 from PIL import Image
 import os.path as osp
 import os
 import numpy as np
 import scipy
-#from model import CreateSSLModel
 import torch.backends.cudnn as cudnn
 from scipy.ndimage.morphology import binary_fill_holes
 from skimage import morphology
 from skimage.measure import label, regionprops
 
-
 gt = ".\dataset\source\labels"
 pre = ""
 dir = ".\dataset"
 
-
-
 def get_contours(img):
-
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     ret, img_bin = cv2.threshold(img_gray, 200, 255, cv2.THRESH_BINARY)
     contours, hierarchy = cv2.findContours(img_bin, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
-
     return contours[0]
-
 
 def calculate_hausdorff(gt_dir, pred_dir, devkit_dir=''):
     distance_disc = []
@@ -61,7 +52,6 @@ def calculate_hausdorff(gt_dir, pred_dir, devkit_dir=''):
         pred_i_disc = get_contours(pred_img_disc)         
         distance_cup.append(hausdorff_sd.computeDistance(gt_i, pred_i))
         distance_disc.append(hausdorff_sd.computeDistance(gt_i_disc, pred_i_disc))
-
     print(distance_disc)
     print(distance_cup)
     return sum(distance_disc) / (1. * len(distance_disc)), sum(distance_cup) / (1. * len(distance_cup))

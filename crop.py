@@ -55,21 +55,10 @@ if __name__ == '__main__':
     new_root = '/extracephonline/medai_data2/zhengdzhang/eyes/qikan/cai/source'
     img_ids = [i_id.strip() for i_id in open(list_path)]
     print(len(img_ids))
-    '''
-    image_path = '/mnt/ceph_fs/medai_data2/lolitazhang/my-master/eyes-master/path/to/RIM-ONE-r3/target/images'
-    fileList = os.listdir(image_path)
-    
-    for name in fileList:
-        if '_' in name:
-            oldname = image_path + os.sep + name
-            newname = image_path + os.sep + name.split('_')[0] + '.jpg'
-            os.rename(oldname, newname)
-            print(oldname, '======>', newname)
-    '''
+
     for name in img_ids:
         print(name)
         name_img = name.split('.')[0] + '.jpg'
-        #name_img = name.split('.')[0] + '.png'
         name_label = name.split('.')[0] + '.bmp'
         print(name_img, name_label)
         image = Image.open(osp.join(root, "images/%s" % name_img)).convert('RGB')

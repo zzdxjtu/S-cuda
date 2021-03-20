@@ -95,11 +95,18 @@ Disc_dice | 0.947 | 0.943 | 0.943 | 0.941
 Cup_dice | 0.889 | 0.886 | 0.886 | 0.872  
 ### Supplementary notes  
 ```
-boudary.ipynb  ##Calculate the weight map of the optic cup, optic disc, and background  
-calculate_dice.py  ##Calculate dice coefficient  
-get_contour.ipynb  ##Obtain the edge contour of the target object  
-hausdorff_dis.py  ##Calculate hausdorff distance  
-noise_label.ipynb  ##Generate labels with different levels of noise and different proportions, including corrosion, expansion, deformation operations
+boudary.ipynb  
+##Calculate the weight map of the optic cup, optic disc, and background  
+calculate_dice.py  
+##Calculate dice coefficient  
+get_contour.ipynb  
+##Obtain the edge contour of the target object  
+hausdorff_dis.py  
+##Calculate hausdorff distance  
+noise_label.ipynb  
+##Generate labels with different levels of noise and different proportions, including corrosion, expansion, deformation operations
+crop.py  
+##crop 512×512 ROI from source image.
 ```
 ### Acknowledge  
 Some of our codes are referring to [liyunsheng13/BDL](https://github.com/liyunsheng13/BDL) and [EmmaW8/pOSAL](https://github.com/EmmaW8/pOSAL). Thanks for their helpful works.

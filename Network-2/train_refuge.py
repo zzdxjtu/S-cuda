@@ -19,14 +19,14 @@ import tensorflow as tf
 import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('--dataset', type = str, help = 'refuge-new, Drishti-GS', default = 'refuge-new')
-parser.add_argument('--label_dir', type = str, default = '/extracephonline/medai_data2/lolitazhang/my-master/eyes-master/data/refuge-new/source/disc_small/mask')
-parser.add_argument('--data-list-source', type=str, default='/extracephonline/medai_data2/lolitazhang/my-master/eyes-master/path/to/dataset-new/source.txt', help="Path to the file listing the images in the source dataset.")
-parser.add_argument('--data-list-target', type=str, default='/extracephonline/medai_data2/lolitazhang/my-master/eyes-master/path/to/dataset-new/target.txt', help="Path to the file listing the images in the source dataset.")
+parser.add_argument('--label_dir', type = str, default = '..\\disc_small\\source\\mask')
+parser.add_argument('--data-list-source', type=str, default='..\\dataset\\source.txt', help="Path to the file listing the images in the source dataset.")
+parser.add_argument('--data-list-target', type=str, default='..\\dataset\\target.txt', help="Path to the file listing the images in the source dataset.")
 parser.add_argument('--load_selected_samples', type = str, help = 'dir to load selected samples', default = None)
-parser.add_argument('--save_selected_samples', type = str, help = 'dir to save selected samples', default = '/extracephonline/medai_data2/zhengdzhang/eyes/qikan/correction/n2/clean_list/level_0.5-0.7/noise_labels_0.5/selected_sample_0.3_new.txt')
-parser.add_argument('--noise_selected_samples', type = str, help = 'dir to save noise samples', default = '/extracephonline/medai_data2/zhengdzhang/eyes/qikan/correction/n2/noise_list/level_0.5-0.7/noise_labels_0.5/noise_sample_0.3_new.txt')
-parser.add_argument('--restore-from', type=str, default='/extracephonline/medai_data2/lolitazhang/my-master/eyes-master/weights/refuge-new/DA_patch/Generator/generator_50.h5')
-parser.add_argument('--weight-root', type=str, default='/extracephonline/medai_data2/zhengdzhang/eyes/qikan/correction/n2/weights/level_0.5-0.7/noise_labels_0.5/select_0.1')
+parser.add_argument('--save_selected_samples', type = str, help = 'dir to save selected samples', default = '..\\clean\\n2\\clean_list\\level_0.2-0.3\\noise_labels_0.1\\clean_selected_0.1.txt')
+parser.add_argument('--noise_selected_samples', type = str, help = 'dir to save noise samples', default = '..\\noisy\\n2\noise_list\\level_0.2-0.3\\noise_labels_0.1\\noise_selected_0.1.txt')
+parser.add_argument('--restore-from', type=str, default='..\\weights\\Generator\\generator.h5')
+parser.add_argument('--weight-root', type=str, default='..\\weights-n2\\level_0.2-0.3\\noise_labels_0.1\\select_0.1')
 parser.add_argument('--total_number', type = int, help = 'total number ', default = 200)
 parser.add_argument('--epoch', type = int, help = 'total number ', default = 1)
 parser.add_argument('--remember_rate', type = float, help = 'remember rate ', default = 0.1)
@@ -137,14 +137,14 @@ if __name__ == '__main__':
         data_list = args.data_list_source
     else:
         data_list = load_selected_samples
-    trainGenerator_Gene = Generator_Gene(data_list, batch_size, '/extracephonline/medai_data2/zhengdzhang/eyes/qikan/correction/new-dataset_2', DiscROI_size,
+    trainGenerator_Gene = Generator_Gene(data_list, batch_size, '..\\disc_small\\source\\', DiscROI_size,
                                          CDRSeg_size = CDRSeg_size, pt=False, phase='train')
 
-    trainAdversarial_Gene = Adversarial_Gene(batch_size, '/extracephonline/medai_data2/zhengdzhang/eyes/qikan/correction/new-dataset_2', DiscROI_size,
+    trainAdversarial_Gene = Adversarial_Gene(batch_size, '..\\disc_small\\source\\', DiscROI_size,
                                              CDRSeg_size=CDRSeg_size, phase='train', noise_label=False)
-    trainDS_Gene = GD_Gene(batch_size, '/extracephonline/medai_data2/zhengdzhang/eyes/qikan/correction/new-dataset_2', True,
+    trainDS_Gene = GD_Gene(batch_size, '..\\disc_small\\source\\', True,
                            CDRSeg_size=CDRSeg_size, phase='train', noise_label=False)
-    trainDT_Gene = GD_Gene(batch_size, '/extracephonline/medai_data2/lolitazhang/my-master/eyes-master/data/' + dataset_t + '/target/disc_small', False,
+    trainDT_Gene = GD_Gene(batch_size, '..\\disc_small\\target', False,
                            CDRSeg_size=CDRSeg_size, phase='train', noise_label=False)
 
     ''' train for epoch and iter one by one '''

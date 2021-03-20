@@ -412,7 +412,7 @@ def Generator_Gene(data_list, batch_size, train_path, img_size, CDRSeg_size=400,
         img = np.asarray(image.load_img(path))
         X[i] = img
         mask_ = np.asarray(
-            image.load_img(os.path.join(train_path, "level_0.5-0.7/","noise_mask_0.9_scratch", id_.split('.')[0] + ".png"), grayscale=True))
+            image.load_img(os.path.join(train_path, "level_0.2-0.3/","noise_mask_0.1_scratch", id_.split('.')[0] + ".png"), grayscale=True))
             #image.load_img(os.path.join(train_path, "mask/", id_.split('.')[0] + ".png"), grayscale=True))
         Y[i, :, :, 0] = mask_
 

@@ -1,21 +1,18 @@
 import torch.backends.cudnn as cudnn
 from torch.autograd import Variable
-#from options.test_ssl_options import TestOptions
-#from data import CreateTrgDataSSLLoader
 from PIL import Image
 import os.path as osp
 import os
 import numpy as np
 import scipy
-#from model import CreateSSLModel
 import torch.backends.cudnn as cudnn
 from scipy.ndimage.morphology import binary_fill_holes
 from skimage import morphology
 from skimage.measure import label, regionprops
 
-gt = "/apdcephfs/share_1085767/zhengdzhang/eyes/dataset/source/eyesgan/labels"
-pre = "/apdcephfs/share_1085767/zhengdzhang/eyes/qikan/correction/new-dataset/level_0.2-0.3/noise_labels_0.9"
-dir = "/apdcephfs/share_1085767/zhengdzhang/eyes/qikan/correction/update_list/level_0.2-0.3/noise_labels_0.9/select_0.5"
+gt = "./dataset/source/labels"
+pre = ""
+dir = "./dataset"
 
 def dice_coef(y_true, y_pred):     
     smooth = 1e-8
@@ -25,7 +22,7 @@ def dice_coef(y_true, y_pred):
 def calculate_dice(gt_dir, pred_dir, devkit_dir=''):
     disc_dice = []
     cup_dice = []
-    image_path_list = osp.join(devkit_dir, 'jiao.txt')
+    image_path_list = osp.join(devkit_dir, 'source.txt')
     img_ids = [i_id.strip() for i_id in open(image_path_list)]
     gt_imgs = [osp.join(gt_dir, x.split('.')[0]+'.bmp') for x in img_ids]
     pred_imgs = [osp.join(pred_dir, x.split('.')[0]+'.bmp') for x in img_ids]

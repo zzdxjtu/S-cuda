@@ -93,8 +93,10 @@ Level_0.5-0.7/noise_labels_0.5 | select_0.1 | select_0.2 | select_0.3 | select_0
 ---- | ---- | ----| ---- | ----  
 Disc_dice | 0.947 | 0.943 | 0.943 | 0.941  
 Cup_dice | 0.889 | 0.886 | 0.886 | 0.872  
+
 __4.Selection ability__  
 We also show the selection ability of these two networks
+
 ### Supplementary notes  
 ```
 boudary.ipynb  

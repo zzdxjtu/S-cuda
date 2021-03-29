@@ -93,6 +93,37 @@ Level_0.5-0.7/noise_labels_0.5 | select_0.1 | select_0.2 | select_0.3 | select_0
 ---- | ---- | ----| ---- | ----  
 Disc_dice | 0.947 | 0.943 | 0.943 | 0.941  
 Cup_dice | 0.889 | 0.886 | 0.886 | 0.872  
+
+__4.Selection ability__  
+We also show the selection ability of these two networks training from scratch via calculating the dice coefficient.
+
+**Clean data**
+N1/Level_0.5-0.7/noise_labels_0.1 | select_0.1 | select_0.3 | select_0.5 | select_0.7   
+---- | ---- | ----| ---- | ----  
+Disc_dice | 1.0 | 0.995 | 0.997 | 0.994  
+Cup_dice | 1.0 | 1.0 | 1.0 | 0.995  
+
+N2/Level_0.5-0.7/noise_labels_0.1 | select_0.1 | select_0.3 | select_0.5 | select_0.7   
+---- | ---- | ----| ---- | ----  
+Disc_dice | 1.0 | 1.0 | 0.995 | 0.983  
+Cup_dice | 1.0 | 1.0 | 0.982 | 0.967  
+
+**Noisy data**
+N1/Level_0.5-0.7/noise_labels_0.1 | select_0.1_1 | select_0.1_2 | select_0.1_3 | select_0.1_4   
+---- | ---- | ----| ---- | ----  
+Disc_dice | 0.861 | 0.896 | 0.786 | 0.815  
+Cup_dice | 0.784 | 0.777 | 0.755 | 0.813  
+
+N2/Level_0.5-0.7/noise_labels_0.1 | select_0.1_1 | select_0.1_2 | select_0.1_3 | select_0.1_4   
+---- | ---- | ----| ---- | ----  
+Disc_dice | 0.857 | 0.864 | 0.833 | 0.897  
+Cup_dice | 0.766 | 0.801 | 0.827 | 0.925  
+
+Intersection of N1 and N2/Level_0.5-0.7/noise_labels_0.1 | select_0.1_1 | select_0.1_2 | select_0.1_3 | select_0.1_4   
+---- | ---- | ----| ---- | ----  
+Disc_dice | 0.761 | 0.831 | 0.7 | 0.743  
+Cup_dice | 0.615 | 0.596 | 0.715 | 0.866    
+
 ### Supplementary notes  
 ```
 boudary.ipynb  

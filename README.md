@@ -95,7 +95,7 @@ Disc_dice | 0.947 | 0.943 | 0.943 | 0.941
 Cup_dice | 0.889 | 0.886 | 0.886 | 0.872  
 
 __4.Selection ability__  
-We also show the selection ability of these two networks training from scratch via calculating the dice coefficient.
+We also demonstrate the selection ability of these two networks training from scratch via calculating the dice coefficient.
 
 **Clean data**
 N1/Level_0.5-0.7/noise_labels_0.1 | select_0.1 | select_0.3 | select_0.5 | select_0.7   
@@ -124,7 +124,7 @@ Intersection of N1 and N2/Level_0.5-0.7/noise_labels_0.1 | select_0.1_1 | select
 Disc_dice | 0.761 | 0.831 | 0.7 | 0.743  
 Cup_dice | 0.615 | 0.596 | 0.715 | 0.866  
 
-In addition, the noise select ratio and clean select ratio can be changed according to your own task and the noise ratio of your dataset. For example, 
+In addition, the noise select ratio and clean select ratio can be changed according to your own task and the training dataset. For example, if you know the noise ratio of the dataset, you can set the select ratio according to it, but if you don't know how many noise data in your dataset, you can set both of the noise select ratio and clean select ratio to 0.1 respectively, and then increase the select ratio of clean data gradually, after you acquire the best results, maintain the select ratio of clean data and gradually increase the select ratio of noisy data.    
 
 ### Supplementary notes  
 ```

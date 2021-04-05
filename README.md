@@ -125,7 +125,6 @@ Disc_dice | 0.761 | 0.831 | 0.7 | 0.743
 Cup_dice | 0.615 | 0.596 | 0.715 | 0.866  
 
 In addition, the noise select ratio and clean select ratio can be changed according to your own task and the training dataset. For example, if you know the noise ratio of the dataset, you can set the select ratio according to it, but if you don't know how many noise data in your dataset, you can set both of the noise select ratio and clean select ratio to 0.1 respectively, and then increase the select ratio of clean data gradually, after you acquire the best results, maintain the select ratio of clean data and gradually increase the select ratio of noisy data.    
-
 ### Supplementary notes  
 ```
 boudary.ipynb  

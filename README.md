@@ -1,5 +1,5 @@
 # S-cuda: Self-Cleansing Unsupervised Domain Adaptation for Medical Image Segmentation
-This repository provides code for the paper, S-CUDA: Self-Cleansing Unsupervised Domain Adaptation for Medical Image Segmentation. Please read our paper to understand our proposed method.
+This repository provides code for the paper, S-CUDA: Self-Cleansing Unsupervised Domain Adaptation for Medical Image Segmentation. Please read our paper to understand our proposed method. You can replace N1 or N2 in this method with any segmentation network according to the needs of your task.
 ## Pipeline
 ![image](https://user-images.githubusercontent.com/38779372/110201691-84edaa00-7e9f-11eb-94bb-1043dc82eba7.png)
 ## Getting started
@@ -122,7 +122,9 @@ Cup_dice | 0.766 | 0.801 | 0.827 | 0.925
 Intersection of N1 and N2/Level_0.5-0.7/noise_labels_0.1 | select_0.1_1 | select_0.1_2 | select_0.1_3 | select_0.1_4   
 ---- | ---- | ----| ---- | ----  
 Disc_dice | 0.761 | 0.831 | 0.7 | 0.743  
-Cup_dice | 0.615 | 0.596 | 0.715 | 0.866    
+Cup_dice | 0.615 | 0.596 | 0.715 | 0.866  
+
+In addition, the noise select ratio and clean select ratio can be changed according to your own task and the noise ratio of your dataset. For example, 
 
 ### Supplementary notes  
 ```

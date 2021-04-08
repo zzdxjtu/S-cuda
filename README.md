@@ -1,5 +1,5 @@
 # S-cuda: Self-Cleansing Unsupervised Domain Adaptation for Medical Image Segmentation
-This repository provides code for the paper, S-CUDA: Self-Cleansing Unsupervised Domain Adaptation for Medical Image Segmentation. Please read our paper to understand our proposed method. You can replace N1 or N2 in this method with any segmentation network according to the needs of your task.
+This repository provides code for the paper, S-CUDA: Self-Cleansing Unsupervised Domain Adaptation for Medical Image Segmentation. Please refer to our paper for better understanding the method. Notably, the N1 or N2 in the framework can be replaced to other segmentation networks based on your tasks.
 ## Pipeline
 ![image](https://user-images.githubusercontent.com/38779372/110201691-84edaa00-7e9f-11eb-94bb-1043dc82eba7.png)
 ## Getting started
@@ -61,7 +61,7 @@ All training script is stored in scripts directory.
 ```
 sh scripts/run1.sh  
 ```
-##The two networks select the noise data and clean data simultaneously, and then input the clean data into each other's network for finetune, and you can change the remember rate and noise rate according to the noise ratio of the source training set.
+##The two peer networks select the noise data and clean data simultaneously, and then the selected clean data are fed into the peer network for finetune, and you can change the remember rate and noise rate according to the noise ratio of the source training set.
 ```
 sh scripts/run2.sh  
 ```
@@ -124,7 +124,7 @@ Intersection of N1 and N2/Level_0.5-0.7/noise_labels_0.1 | select_0.1_1 | select
 Disc_dice | 0.761 | 0.831 | 0.7 | 0.743  
 Cup_dice | 0.615 | 0.596 | 0.715 | 0.866  
 
-In addition, the noise select ratio and clean select ratio can be changed according to your own task and the training dataset. For example, if you know the noise ratio of the dataset, you can set the select ratio according to it, but if you don't know how many noise data in your dataset, you can set both of the noise select ratio and clean select ratio to 0.1 respectively, and then increase the select ratio of clean data gradually, after you acquire the best results, maintain the select ratio of clean data and gradually increase the select ratio of noisy data.    
+In addition, the noise select ratio and clean select ratio can be modified according to your own tasks and the training dataset. For example, with the noise ratio of the dataset, which can be estimated by sampling analysis, you can set the select ratio accordingly. You can also set both of the initial noise select ratio and clean select ratio to 0.1, respectively, and then increase the select ratio of clean data gradually to make sure the two peer netowrks work well, after that maintain the select ratio of clean data and gradually increase the select ratio of noisy data.    
 ### Supplementary notes  
 ```
 boudary.ipynb  
@@ -141,4 +141,4 @@ crop.py
 ##crop 512×512 ROI from source image
 ```
 ### Acknowledge  
-Some of our codes are referring to [liyunsheng13/BDL](https://github.com/liyunsheng13/BDL) and [EmmaW8/pOSAL](https://github.com/EmmaW8/pOSAL). Thanks for their helpful works.
+Some of our codes (i.e., two peer networks) are referring to [liyunsheng13/BDL](https://github.com/liyunsheng13/BDL) and [EmmaW8/pOSAL](https://github.com/EmmaW8/pOSAL). Thanks for their helpful works.

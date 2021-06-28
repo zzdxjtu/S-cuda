@@ -475,7 +475,7 @@ class ResNet101(nn.Module):
         return model
 
 
-    def forward(self, x, ssl=False, lbl=None, lbl_new=None, weight=None, alpha=0.5):
+    def forward(self, x, ssl=False, lbl=None, lbl_new=None, weight=None, weight_new=None, alpha=0.5):
         _, _, h, w = x.size()
         x = self.conv1(x)
         x = self.bn1(x)
@@ -521,6 +521,17 @@ class ResNet101(nn.Module):
                 self.loss1 = DiceLoss()(x1, weight_bck)*5 + self.Smoothloss(x1, lbl)*20 #(1,1024,1024)
                 self.loss2 = DiceLoss()(x2, weight_bck)*5 + self.Smoothloss(x2, lbl)*20
                 self.loss = self.loss1*0.1 + self.loss2 + WeightLoss1*0.1 + WeightLoss2
+
+            if weight_new is not None:
+                weight_map_loss = WeightMapLoss()
+                WeightLoss1_new = weight_map_loss(x1, lbl_new, weight_new) * 5  # [1,3,1024,1024] [1,1024,1024] [1,1024,1024,3]
+                WeightLoss2_new = weight_map_loss(x2, lbl_new, weight_new) * 5
+
+                weight_bck_new = weight_new[:, 0, :, :]
+                self.loss1_new = DiceLoss()(x1, weight_bck_new) * 5 + self.Smoothloss(x1, lbl_new) * 20  # (1,1024,1024)
+                self.loss2_new = DiceLoss()(x2, weight_bck_new) * 5 + self.Smoothloss(x2, lbl_new) * 20
+                self.loss_new = self.loss1_new * 0.1 + self.loss2_new + WeightLoss1_new * 0.1 + WeightLoss2_new
+            self.loss_reweight = (1 - alpha) * self.loss + alpha * self.loss_new
             
         return x1, x2, xaa1, xaa2
 

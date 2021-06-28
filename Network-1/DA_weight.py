@@ -91,11 +91,14 @@ def main():
     threshold = 0.4
     rat = 0.5
     T_1 = int(total_num/4)
+    T_2 = int(3 * total_num / 4)
     for i in range(start_iter, start_iter + total_num):
         if i < T_1:
             alpha = 0
+        elif i >= T_1 and i < T_2:
+            alpha = rat * (i - T_1) / (T_2 - T_1)
         else:
-            alpha = rat * (i-T_1)/(total_num-T_1)
+            alpha = 0.5
         model.adjust_learning_rate(args, optimizer, i)
         model_D1.adjust_learning_rate(args, optimizer_D1, i)
         model_D2.adjust_learning_rate(args, optimizer_D2, i)
@@ -116,7 +119,7 @@ def main():
             sourceloader_iter = iter(sourceloader)
             src_img, src_lbl, src_lbl_new, weight_map, weight_map_new, name = sourceloader_iter.next()
         src_img, src_lbl, src_lbl_new, weight_map, weight_map_new = Variable(src_img).cuda(), Variable(src_lbl.long()).cuda(), Variable(src_lbl_new.long()).cuda(), Variable(weight_map.long()).cuda(), Variable(weight_map_new.long()).cuda()
-        src_seg_score1, src_seg_score2, src_seg_score3, src_seg_score4 = model(src_img, lbl=src_lbl, lbl_new=src_lbl_new, weight=None, alpha=alpha)
+        src_seg_score1, src_seg_score2, src_seg_score3, src_seg_score4 = model(src_img, lbl=src_lbl, lbl_new=src_lbl_new, weight=None, weight_new=None, alpha=alpha)
         loss_seg_src = model.loss_sum   
         loss_seg_src.backward()
         loss_list.append(loss_seg_src)
@@ -139,8 +142,8 @@ def main():
 
         if load_selected_samples is not None:
             if (2- predict_disc_dice - predict_cup_dice)>threshold:
-                src_seg_score1, src_seg_score2, src_seg_score3, src_seg_score4 = model(src_img, lbl=src_lbl, weight=weight_map)
-                weightloss = 0.05 * model.loss
+                src_seg_score1, src_seg_score2, src_seg_score3, src_seg_score4 = model(src_img, lbl=src_lbl, lbl_new=src_lbl_new, weight=weight_map, weight_new=weight_map_new, alpha=alpha)
+                weightloss = 0.05 * model.loss_reweight
                 print('weightloss:', weightloss)
                 weightloss.backward()
 
